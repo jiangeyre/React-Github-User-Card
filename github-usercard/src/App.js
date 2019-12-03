@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import UserCard from './components/UserCard';
 import AddUserForm from './components/AddUser';
-
+import FriendsList from './components/FollowersList';
 import bbyoda from './img/bbyoda.jpg';
-
 import './App.css';
 import Axios from 'axios';
+import styled from 'styled-components';
+
+const Container = styled.div `
+  margin: auto;
+  display: flex;
+  max-width: 90%;
+  justify-content: space-around;
+`;
 
 class App extends Component{
   constructor(){
     super();
     this.state = {
       username: 'jiangeyre',
-      usersList: []
+      gitUser: {},
+      followers: [] ,
+      inputValue: ''
     }
   }
 
@@ -33,11 +42,18 @@ class App extends Component{
     Axios.get(`https://api.github.com/users/${this.state.username}`)
     .then(res => {
       this.setState({
-        usersList: [...this.state.usersList, res.data]
+        gitUser: res.data
       })
     })
     .catch(err => {
       console.log('error: ', err);
+    })
+
+    Axios.get(`https://api.github.com/users/${this.state.username}/followers`)
+    .then((res) => {
+      this.setState({
+        followers: res.data
+      })
     })
   }
 
@@ -60,15 +76,11 @@ class App extends Component{
         <div>
           <AddUserForm addUser={this.addUser} />
         </div>
-        <div>
-          {this.state.usersList.map((item, ind) => {
-            return (
-              <div className="user-card" key={ind}>
-                <UserCard detail={item} />
-              </div>
-            )
-          })}
-        </div>
+        <UserCard {...this.state.gitUser} />
+        <h1>Followers:</h1>
+        <Container>
+          <FriendsList followers={this.state.followers} />
+        </Container>
       </div>
     );
   }

@@ -1,27 +1,46 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
-// import axios from 'axios';
+import styled from 'styled-components';
+
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
+
+const BIG = styled.div`
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+`;
+
+const Card = styled.div `
+    box-sizing: border-box;
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+    box-shadow: 3px 5px 3px #282c34;
+`;
 
 class UserCard extends Component {
-    constructor(){
-        super();
-        this.state = {
-            detail: []
-        }
-    }
-
-    render(){
+    render() {
         return (
-            <Card className="cardCont">
-                <img src={this.props.detail.avatar_url} className="cardImg" alt="usercard img github" />
-                <Card.Content className="cardInfo">
-                    <Card.Header className="cardUsername">Username: {this.props.detail.login}</Card.Header>
-                    <Card.Meta className="cardName">Name: {this.props.detail.name}</Card.Meta>
-                    <Card.Meta className="cardFollowers">Followers: {this.props.detail.followers}</Card.Meta>
-                </Card.Content>
-            </Card>
-        )
+            <BIG>
+                <Card>
+                    <CardHeader image={this.props.avatar_url} username={this.props.login} />
+                    <CardBody
+                        login={this.props.login} 
+                        name={this.props.name}
+                        location={this.props.location}
+                        followers={this.props.followers} 
+                        following={this.props.following} 
+                    />
+                </Card>
+            </BIG>
+        );
     }
 }
 
-export default UserCard;
+export default UserCard; 
