@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'semantic-ui-react';
-import axios from 'axios';
+// import axios from 'axios';
 
 class UserCard extends Component {
     constructor(){
@@ -13,7 +13,7 @@ class UserCard extends Component {
     render(){
         return (
             <Card className="cardCont">
-                <img src={this.props.detail.avatar_url} className="cardImg" />
+                <img src={this.props.detail.avatar_url} className="cardImg" alt="usercard img github" />
                 <Card.Content className="cardInfo">
                     <Card.Header className="cardUsername">Username: {this.props.detail.login}</Card.Header>
                     <Card.Meta className="cardName">Name: {this.props.detail.name}</Card.Meta>

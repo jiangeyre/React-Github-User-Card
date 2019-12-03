@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import UserCard from './components/UserCard';
 import AddUserForm from './components/AddUser';
 
+import bbyoda from './img/bbyoda.jpg';
+
 import './App.css';
 import Axios from 'axios';
 
@@ -50,6 +52,7 @@ class App extends Component{
     return (
       <div className="App">
         <header className="App-header">
+          <img src={bbyoda} alt="baby yoda"/>
           <h1>
             GitHub User Cards
           </h1>
