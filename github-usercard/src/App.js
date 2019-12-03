@@ -76,8 +76,9 @@ class App extends Component{
         <div>
           <AddUserForm addUser={this.addUser} />
         </div>
+        <h1>Captain:</h1>
         <UserCard {...this.state.gitUser} />
-        <h1>Followers:</h1>
+        <h1>Crew:</h1>
         <Container>
           <FriendsList followers={this.state.followers} />
         </Container>

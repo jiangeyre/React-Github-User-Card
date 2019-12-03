@@ -5,7 +5,6 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 
 const BIG = styled.div`
-    padding-top: 50px;
     display: flex;
     justify-content: center;
     padding-bottom: 25px;
@@ -21,7 +20,7 @@ const Card = styled.div `
     flex-direction: column;
     align-items: center;
     padding-bottom: 10px;
-    box-shadow: 3px 5px 3px #282c34;
+    box-shadow: 3px 6px 3px #282c34;
 `;
 
 class UserCard extends Component {
