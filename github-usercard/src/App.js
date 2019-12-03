@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import UserCard from './components/UserCard';
-import AddUser from './components/AddUser';
+import AddUserForm from './components/AddUser';
 
 import './App.css';
 import Axios from 'axios';
 
-class App extends Component {
+class App extends Component{
   constructor(){
     super();
     this.state = {
@@ -27,10 +27,9 @@ class App extends Component {
     }
   }
 
-  fetchUsers = (e, (user = `${this.state.username}`)) => {
-    Axios.get(`https://api.github.com/users/${user}`)
+  fetchUsers = () => {
+    Axios.get(`https://api.github.com/users/${this.state.username}`)
     .then(res => {
-      console.log(res);
       this.setState({
         usersList: [...this.state.usersList, res.data]
       })
@@ -55,6 +54,9 @@ class App extends Component {
             GitHub User Cards
           </h1>
         </header>
+        <div>
+          <AddUserForm addUser={this.addUser} />
+        </div>
         <div>
           {this.state.usersList.map((item, ind) => {
             return (

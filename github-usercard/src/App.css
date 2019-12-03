@@ -1,22 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
+  font-family: 'Inconsolata', monospace;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 2.5rem;
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.cardCont{
+  border: 1px solid black;
 }
